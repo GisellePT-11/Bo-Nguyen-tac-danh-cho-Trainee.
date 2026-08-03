@@ -1,0 +1,660 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nguyên Tắc Làm Việc - PATI's Trainee</title>
+<link rel="icon" href="LOGO PATI GROUP.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0b3d26;
+    --green-800:#0f5132;
+    --green-600:#157347;
+    --green-500:#1a8a53;
+    --green-100:#e6f2ea;
+    --green-050:#f3f9f5;
+    --line:#d9e8df;
+    --ink:#16241d;
+    --muted:#5a6b62;
+    --white:#ffffff;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{
+    margin:0;
+    font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Header ---------- */
+  header.topbar{
+    position:sticky;top:0;z-index:20;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;color:var(--green-800)}
+  .brand img{height:36px;width:auto;display:block}
+  nav.topnav{display:flex;gap:26px;font-size:14px;font-weight:600;white-space:nowrap}
+  nav.topnav a{color:var(--muted);text-decoration:none}
+  nav.topnav a:hover{color:var(--green-600)}
+  @media(max-width:760px){nav.topnav{gap:16px;font-size:13px}.brand span{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 420px at 82% -8%, var(--green-100), transparent 62%),
+      var(--white);
+    border-bottom:1px solid var(--line);
+    padding:64px 0 56px;
+  }
+  .hero-logo{height:64px;width:auto;display:block;margin-bottom:24px}
+  .hero h1{
+    font-size:clamp(2rem,5.2vw,3.25rem);
+    line-height:1.12;letter-spacing:-.03em;font-weight:800;
+    margin:0 0 14px;color:var(--green-900);
+    text-transform:uppercase;
+  }
+  .hero h1 span{color:var(--green-500)}
+  .hero p.lead{
+    font-size:1.05rem;color:var(--muted);max-width:62ch;margin:0;
+    font-style:italic;
+  }
+  .badge{
+    display:inline-block;margin-bottom:20px;padding:6px 14px;border-radius:999px;
+    background:var(--green-100);color:var(--green-800);
+    font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  }
+  /* Ô cam kết - manifest tối, dấu ngoặc kép trang trí */
+  .oath{
+    margin-top:34px;padding:32px 34px 30px 38px;
+    border-radius:var(--radius);
+    background:linear-gradient(135deg,var(--green-900),var(--green-800));
+    color:#eaf6ef;max-width:660px;position:relative;overflow:hidden;
+    box-shadow:0 14px 40px -18px rgba(11,61,38,.55);
+  }
+  .oath::before{
+    content:"\201C";position:absolute;top:-26px;left:18px;
+    font-size:6rem;line-height:1;color:rgba(255,255,255,.13);font-family:Georgia,serif;
+  }
+  .oath::after{
+    content:"";position:absolute;inset:auto -30px -30px auto;width:160px;height:160px;
+    background:radial-gradient(circle at center, rgba(255,255,255,.07), transparent 70%);
+  }
+  .oath p{margin:0;font-size:1.02rem;font-weight:500;position:relative}
+  .oath p + p{
+    margin-top:16px;padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.18);
+    font-weight:700;color:#fff;
+  }
+
+  /* ---------- Accordion: PHẦN ---------- */
+  details.part{
+    margin:40px 0 0;border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--white);overflow:hidden;
+  }
+  details.part > summary{
+    list-style:none;cursor:pointer;padding:22px 26px;
+    background:var(--green-800);color:#fff;
+    display:flex;align-items:center;gap:16px;
+  }
+  details.part > summary::-webkit-details-marker{display:none}
+  details.part > summary .kicker{
+    font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    color:#9fd6b6;display:block;margin-bottom:2px;
+  }
+  details.part > summary h2{
+    margin:0;font-size:1.35rem;letter-spacing:.01em;font-weight:800;
+    text-transform:uppercase;
+  }
+  .chev{
+    margin-left:auto;flex:0 0 auto;width:26px;height:26px;
+    display:grid;place-items:center;font-size:1rem;
+    transition:transform .2s ease;
+  }
+  details[open] > summary .chev{transform:rotate(180deg)}
+  .part-body{padding:22px 22px 26px}
+
+  /* ---------- Accordion: MỤC ---------- */
+  details.item{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--white);margin-bottom:14px;overflow:hidden;
+    break-inside:avoid;
+  }
+  details.item:last-child{margin-bottom:0}
+  details.item > summary{
+    list-style:none;cursor:pointer;padding:18px 22px;
+    display:flex;align-items:center;gap:16px;
+  }
+  details.item > summary::-webkit-details-marker{display:none}
+  details.item > summary:hover{background:var(--green-050)}
+  details.item[open] > summary{border-bottom:1px solid var(--line);background:var(--green-050)}
+  .num{
+    flex:0 0 auto;width:38px;height:38px;border-radius:11px;
+    background:var(--green-800);color:#fff;
+    display:grid;place-items:center;font-weight:800;font-size:.95rem;
+  }
+  .item-title h3{margin:0;font-size:1.1rem;letter-spacing:-.01em;color:var(--green-900)}
+  .item-title .tag{
+    display:block;margin-top:2px;font-size:.74rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--green-500);
+  }
+  .item-body{padding:20px 22px 24px}
+  .item-body > :first-child{margin-top:0}
+  .item-body ul,.item-body ol{margin:0 0 4px;padding-left:20px}
+  .item-body li{margin-bottom:7px}
+  .item-body li::marker{color:var(--green-500)}
+  .item-body h4{margin:24px 0 6px;color:var(--green-800);font-size:1rem}
+
+  .note{
+    margin-top:16px;padding:14px 18px;border-radius:10px;
+    background:var(--green-050);border:1px solid var(--line);font-size:.94rem;
+  }
+  .note.warn{background:#fff7ed;border-color:#fed7aa}
+  .formula{
+    margin:16px 0;padding:16px 20px;border-radius:10px;
+    background:var(--green-900);color:#eaf6ef;
+    font-weight:600;text-align:center;letter-spacing:-.01em;
+  }
+  .sub-italic{font-style:italic;font-weight:300;color:var(--muted);margin:0 0 12px}
+  .lark-only{
+    margin-top:14px;padding:11px 18px;border-radius:10px;
+    background:#f6f7f8;border:1px dashed #b8c4be;
+    color:#5a6b62;font-size:.88rem;font-weight:500;
+    display:flex;align-items:center;gap:10px;
+  }
+
+  /* Do / Don't */
+  .dd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  @media(max-width:700px){.dd{grid-template-columns:1fr}}
+  .dd > div{padding:16px 18px;border-radius:10px;font-size:.94rem}
+  .dd .do{background:var(--green-050);border:1px solid #bfe0cc}
+  .dd .dont{background:#fdf3f3;border:1px solid #f3cccc}
+  .dd h4{margin:0 0 8px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .dd .do h4{color:var(--green-600)}
+  .dd .dont h4{color:#b02a2a}
+
+  /* WiFi key-value + copy */
+  .kv{display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:16px 20px;border:1px solid var(--line);border-radius:10px;
+      background:var(--green-050);margin-top:10px}
+  .kv + .kv{margin-top:10px}
+  .kv .k{color:var(--muted);font-weight:600;font-size:.92rem}
+  .kv .v{font-weight:700;color:var(--green-900);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.08rem}
+  .v-row{display:flex;align-items:center;gap:14px}
+
+  /* Lịch làm việc */
+  .schedule{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+  @media(max-width:600px){.schedule{grid-template-columns:1fr}}
+  .shift{
+    padding:20px 22px;border-radius:12px;
+    background:var(--green-050);border:1px solid var(--line);
+    border-top:3px solid var(--green-500);
+  }
+  .shift .day{
+    font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--green-600);margin-bottom:6px;
+  }
+  .shift .time{
+    font-size:1.45rem;font-weight:800;color:var(--green-900);
+    letter-spacing:-.02em;line-height:1.2;
+  }
+  .shift .time em{font-style:normal;color:var(--green-500);margin:0 4px;font-weight:600}
+  .break{
+    grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:14px 22px;border-radius:12px;
+    background:var(--white);border:1px dashed var(--line);
+  }
+  .break .lbl{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:600;font-size:.94rem}
+  .break .time{font-weight:700;color:var(--green-800);font-size:1.02rem}
+
+  /* Thư viện ảnh quy định */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+  @media(max-width:640px){.gallery{grid-template-columns:1fr}}
+  .gfig{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white)}
+  .gfig img{display:block;width:100%;height:260px;object-fit:cover;background:var(--green-050)}
+  .gfig figcaption{padding:10px 14px;font-size:.85rem;font-weight:600;color:var(--green-800);background:var(--green-050);border-top:1px solid var(--line)}
+
+  .copy-btn{
+    flex:0 0 auto;border:none;cursor:pointer;
+    background:var(--green-800);color:#fff;
+    width:34px;height:34px;border-radius:8px;font-size:.95rem;
+    display:grid;place-items:center;transition:background .2s ease;
+  }
+
+  /* WiFi và thiết lập Lark */
+  .wifi-panel{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .wifi-row{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:20px;padding:17px 20px}
+  .wifi-row + .wifi-row{border-top:1px solid var(--line)}
+  .wifi-row .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:var(--muted)}
+  .wifi-row .value{justify-self:end;display:flex;align-items:center;gap:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.05rem;font-weight:700;color:var(--green-900)}
+  .setup-list{margin:14px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+  .setup-list li{padding:13px 4px 13px 24px;position:relative;margin:0!important;border-bottom:1px solid var(--line)}
+  .setup-list li::before{content:"";position:absolute;left:4px;top:24px;width:7px;height:7px;border-radius:50%;background:var(--green-500)}
+  .app-list{margin-top:10px;border-top:1px solid var(--line)}
+  .app-list details{border-bottom:1px solid var(--line)}
+  .app-list summary{cursor:pointer;list-style:none;padding:13px 2px;font-weight:700;color:var(--green-800);display:flex;align-items:center}
+  .app-list summary::-webkit-details-marker{display:none}
+  .app-list summary::after{content:"+";margin-left:auto;color:var(--green-500);font-size:1.2rem;font-weight:400}
+  .app-list details[open] summary::after{content:"−"}
+  .app-list p{margin:0;padding:0 2px 14px;color:var(--muted);font-size:.92rem}
+  @media(max-width:600px){.wifi-row{grid-template-columns:1fr;gap:7px}.wifi-row .value{justify-self:start}}
+  .copy-btn:hover{background:var(--green-900)}
+  .copy-btn.done{background:var(--green-500)}
+
+  /* Khung hình phạt */
+  .penalty{
+    margin-top:20px;padding:20px 24px;border-radius:var(--radius);
+    background:#fef2f2;border:2px solid #dc2626;
+    position:relative;
+  }
+  .penalty .ph{
+    display:flex;align-items:center;gap:8px;
+    color:#b91c1c;font-weight:800;font-size:.8rem;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .penalty p{margin:0;color:#7f1d1d;font-weight:500}
+  .penalty strong{color:#b91c1c}
+
+  /* Các bước đăng nhập Gitiho */
+  .steps{padding-left:24px!important;counter-reset:step}
+  .steps > li{padding-left:5px;margin-bottom:18px!important}
+  .steps > li:last-child{margin-bottom:0!important}
+  .email-card{margin-top:12px;padding:15px 17px;border-left:3px solid var(--green-500);background:var(--green-050);border-radius:0 10px 10px 0}
+  .email-tag{display:block;margin-bottom:5px;color:var(--green-600);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .email-subject{display:block;color:var(--green-900);font-style:italic;font-size:.94rem;line-height:1.55}
+
+  /* Địa điểm học */
+  .loc-row{display:flex;gap:14px;padding:17px 18px;border:1px solid var(--line);border-radius:12px;background:var(--green-050)}
+  .loc-row + .loc-row{margin-top:12px;background:var(--white)}
+  .loc-ico{font-size:1.05rem;line-height:1.5}
+  .loc-label{font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-600);margin-bottom:4px}
+  .loc-val{font-size:.95rem;color:var(--green-900);font-weight:500}
+
+  /* Feature + group accordion */
+  .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:16px}
+  .feature{padding:0;border:1px solid var(--line);border-radius:10px;background:var(--white);overflow:hidden}
+  .feature summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:700;color:var(--green-800);display:flex;align-items:center;gap:8px;font-size:.96rem}
+  .feature summary::-webkit-details-marker{display:none}
+  .feature summary:hover{background:var(--green-050)}
+  .feature summary .chev{width:16px;height:16px;font-size:.8rem;margin-left:auto;color:var(--green-500)}
+  .feature[open] summary{border-bottom:1px solid var(--line)}
+  .feature p{margin:0;padding:12px 16px;font-size:.88rem;color:var(--muted);line-height:1.55}
+  .groups{display:grid;gap:10px;margin-top:14px}
+  .group{padding:0;border-radius:10px;background:var(--green-050);border:1px solid var(--line);overflow:hidden}
+  .group summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:700;color:var(--green-800);display:flex;align-items:center;gap:8px}
+  .group summary::-webkit-details-marker{display:none}
+  .group summary:hover{background:#e6f2ea}
+  .group summary .chev{width:16px;height:16px;font-size:.8rem;margin-left:auto;color:var(--green-500)}
+  .group[open] summary{border-bottom:1px solid var(--line)}
+  .group p{margin:0;padding:11px 16px;font-size:.9rem;color:var(--muted)}
+
+  /* Table */
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.94rem}
+  th,td{padding:12px 14px;text-align:left;vertical-align:top}
+  thead th{
+    background:var(--green-800);color:#fff;font-weight:600;
+    font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;
+  }
+  thead th:first-child{border-radius:10px 0 0 0}
+  thead th:last-child{border-radius:0 10px 0 0}
+  tbody tr{border-bottom:1px solid var(--line)}
+  tbody tr:nth-child(even){background:var(--green-050)}
+  tbody tr:last-child{border-bottom:none}
+
+  a.link{color:var(--green-600);font-weight:600;word-break:break-all}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .pill{
+    padding:6px 14px;border-radius:999px;background:var(--green-100);
+    color:var(--green-800);font-size:.85rem;font-weight:600;
+  }
+  footer{
+    margin-top:64px;padding:36px 0;border-top:1px solid var(--line);
+    background:var(--green-050);color:var(--muted);font-size:.9rem;
+  }
+  footer img{height:40px;width:auto;display:block;margin-bottom:14px}
+  footer strong{color:var(--green-800)}
+
+  @media print{
+    header.topbar{display:none}
+    body{font-size:11pt}
+    details{border:1px solid #ccc !important}
+    details > summary{background:#f2f2f2 !important;color:#000 !important}
+    details.part > summary h2,details.part > summary .kicker{color:#000 !important}
+    .chev{display:none}
+    details.item,table,.dd{break-inside:avoid}
+    .hero{padding:20px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <img src="LOGO PATI GROUP.png" alt="PATI Group">
+      <span>PATI Group</span>
+    </div>
+    <nav class="topnav">
+      <a href="#phan-1">NGUYÊN TẮC VẬN HÀNH</a>
+      <a href="#phan-2">GIAI ĐOẠN HỌC</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="LOGO PATI GROUP.png" alt="PATI Group">
+    <span class="badge">Áp dụng từ ngày đầu tiên</span>
+    <h1>Nguyên Tắc Làm Việc<br><span>PATI's Trainee</span></h1>
+    <p class="lead">Bộ nguyên tắc vận hành dành cho toàn bộ Trainee tại PATI Group.</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+<!-- ================= PHẦN I ================= -->
+<details class="part" id="phan-1" open>
+  <summary>
+    <div>
+      <span class="kicker">Phần I</span>
+      <h2>Nguyên Tắc Vận Hành</h2>
+    </div>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="part-body">
+
+    <!-- 1. THỜI GIAN LÀM VIỆC -->
+    <details class="item">
+      <summary>
+        <div class="num">1</div>
+        <div class="item-title"><h3>Thời gian làm việc</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <p class="sub-italic">Thời gian làm việc chính thức tại văn phòng.</p>
+        <div class="schedule">
+          <div class="shift">
+            <div class="day">Thứ 2 - Thứ 6</div>
+            <div class="time">8h30 <em>-</em> 12h30</div>
+          </div>
+          <div class="shift">
+            <div class="day">Thứ 7</div>
+            <div class="time">8h00 <em>-</em> 12h00</div>
+          </div>
+          <div class="break">
+            <span class="lbl">🍜 Nghỉ trưa</span>
+            <span class="time">12h00 - 13h00</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 2. WIFI -->
+    <details class="item">
+      <summary>
+        <div class="num">2</div>
+        <div class="item-title"><h3>Kết nối WiFi</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <div class="wifi-panel">
+          <div class="wifi-row"><span class="label">Tên WiFi</span><span class="value">PATI Group</span></div>
+          <div class="wifi-row"><span class="label">Mật khẩu</span><span class="value"><span id="wifi-pass">Pati@2026</span><button class="copy-btn" data-copy="Pati@2026" title="Sao chép mật khẩu" aria-label="Sao chép mật khẩu">⧉</button></span></div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. LARK -->
+    <details class="item">
+      <summary>
+        <div class="num">3</div>
+        <div class="item-title"><h3>Đăng nhập và thiết lập Lark</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <p class="sub-italic">Sau khi đăng nhập Lark, hoàn thành danh sách thiết lập sau:</p>
+        <ul class="setup-list">
+          <li>Đổi <strong>avatar</strong> theo format PATI.</li>
+          <li>Đổi <strong>tên hiển thị</strong> theo format: <em>Tên tiếng Anh (Tên + Họ)</em>.</li>
+          <li>Add thông tin liên hệ <strong>Chị Quyên</strong>: <a class="link" href="https://www.larksuite.com/invitation/page/add_contact/?token=b3cg514b-1da5-432b-8794-02be9dj1c7nc&amp;unique_id=9gjTpz8TtLZBN-N07YInHQ==" target="_blank" rel="noopener">Mở Lark Chị Quyên</a>.</li>
+        </ul>
+
+        <h4>Tìm hiểu và sử dụng các tính năng cơ bản</h4>
+        <div class="feature-grid">
+          <details class="feature"><summary>💬 Messenger <span class="chev">▾</span></summary><p>Trao đổi công việc, nhận thông báo và làm việc trong group chat.</p></details>
+          <details class="feature"><summary>✉️ Email <span class="chev">▾</span></summary><p>Gửi, nhận và quản lý email công việc.</p></details>
+          <details class="feature"><summary>📅 Calendar <span class="chev">▾</span></summary><p>Theo dõi lịch họp, lịch làm việc và deadline.</p></details>
+          <details class="feature"><summary>✅ Approval <span class="chev">▾</span></summary><p>Gửi, theo dõi và xử lý các yêu cầu phê duyệt.</p></details>
+          <details class="feature"><summary>📚 Wiki <span class="chev">▾</span></summary><p>Lưu trữ bài học, quy trình và kiến thức nội bộ.</p></details>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4. VĂN PHÒNG -->
+    <details class="item">
+      <summary>
+        <div class="num">4</div>
+        <div class="item-title"><h3>Giới thiệu văn phòng &amp; quy định ăn uống / vệ sinh</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <p><strong>Tour nhanh văn phòng</strong> gồm các khu vực: làm việc, bếp, toilet, phòng họp. Nhắc các quy định cụ thể tại từng khu vực.</p>
+        <div class="gallery">
+          <figure class="gfig"><img src="hinh-quy-dinh/NVS .png" alt="Quy định khu vực làm việc" loading="lazy"><figcaption>Khu vực làm việc</figcaption></figure>
+          <figure class="gfig"><img src="hinh-quy-dinh/Quy định b&au.png" alt="Quy định bếp và ăn uống" loading="lazy"><figcaption>Bếp &amp; ăn uống</figcaption></figure>
+          <figure class="gfig"><img src="hinh-quy-dinh/Quy định kvlv.png" alt="Quy định khu vực sinh hoạt" loading="lazy"><figcaption>Khu vực sinh hoạt</figcaption></figure>
+          <figure class="gfig"><img src="hinh-quy-dinh/Quy định pngl.png" alt="Quy định phòng ngủ / nghỉ" loading="lazy"><figcaption>Phòng nghỉ</figcaption></figure>
+        </div>
+      </div>
+    </details>
+
+    <!-- 5. ĐI TRỄ -->
+    <details class="item" id="di-tre">
+      <summary>
+        <div class="num">5</div>
+        <div class="item-title"><h3>Quy định về đi trễ</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <div class="note" style="margin-top:0"><strong>Định nghĩa "đúng giờ / đúng deadline" của PATI:</strong> có mặt hoặc hoàn thành trước thời hạn ít nhất 5 phút và ở trạng thái sẵn sàng để bắt đầu ngay.<br><br>
+          <strong>Integrity:</strong> ngay khi nhận thấy "có nguy cơ trễ", dù chưa trễ thật, bắt buộc phải chủ động thông báo trước.</div>
+
+        <h4>Nguyên tắc xử lý</h4>
+        <table>
+          <thead><tr><th style="width:56%">Tình huống</th><th>Kết quả</th></tr></thead>
+          <tbody>
+            <tr><td>Đi trễ <strong>không thông báo trước</strong></td><td>Lập biên bản</td></tr>
+            <tr><td>Đi trễ <strong>không có lý do chính đáng</strong> (dù có thông báo)</td><td>Vẫn lập biên bản</td></tr>
+            <tr><td>Đi trễ <strong>có lý do chính đáng</strong></td><td>Xét theo 2 trường hợp bên dưới</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Lý do chính đáng</h4>
+        <p style="margin-top:0">Cần có bằng chứng cụ thể (ảnh hoặc giấy xác nhận):</p>
+        <div class="pill-row">
+          <span class="pill">Tai nạn giao thông</span>
+          <span class="pill">Công an kiểm tra</span>
+          <span class="pill">Xe hỏng</span>
+          <span class="pill">Sức khỏe đột xuất có xác minh y tế</span>
+          <span class="pill">Sự cố bất khả kháng (cháy, ngập)</span>
+        </div>
+
+        <h4>Trường hợp 1: Có bằng chứng minh chứng</h4>
+        <div class="note" style="margin-top:0;border-color:#bfe0cc;background:var(--green-050)">
+          <strong style="color:var(--green-600)">✅ Chấp thuận</strong> - không lập biên bản.
+        </div>
+
+        <h4>Trường hợp 2: Không có bằng chứng minh chứng</h4>
+        <table>
+          <thead><tr><th style="width:26%">Mức độ trễ</th><th>✅ Có thông báo</th><th>🚫 Không thông báo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Dưới 30 phút</strong></td><td>Làm bù giờ cuối ngày</td><td>Lập biên bản + Làm bù giờ cuối ngày</td></tr>
+            <tr><td><strong>Trên 30 phút</strong></td><td>Trừ ½ ngày lương + Làm bù giờ cuối ngày</td><td>Lập biên bản + Trừ ½ ngày lương + Làm bù giờ cuối ngày</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Cách thông báo</h4>
+        <ol>
+          <li>Báo ngay trong group chat team trên Lark.</li>
+          <li>Vào group <strong>Teamwork</strong>.</li>
+          <li>Mở <strong>Late Request Form</strong> (ghim đầu group).</li>
+          <li>Submit ngay khi có nguy cơ trễ.</li>
+        </ol>
+
+        <div class="penalty">
+          <div class="ph">⚠ Hình phạt</div>
+          <p>Đi trễ quá <strong>03 lần</strong> được xem là vi phạm nội quy và thỏa thuận đào tạo. <strong>Công ty có quyền kết thúc quá trình đào tạo và không chi trả trợ cấp.</strong></p>
+        </div>
+      </div>
+    </details>
+
+    <!-- 6. VỀ SỚM / NGHỈ PHÉP -->
+    <details class="item" id="nghi-phep">
+      <summary>
+        <div class="num">6</div>
+        <div class="item-title"><h3>Quy định về về sớm / nghỉ phép</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <ul>
+          <li>Thông báo cho <strong>Line Manager</strong> và team trước <strong>ít nhất 02 ngày</strong>.</li>
+          <li>Nội dung thông báo bắt buộc gồm:
+            <ol>
+              <li><strong>Thời gian:</strong> ngày, giờ bắt đầu và kết thúc.</li>
+              <li><strong>Lý do:</strong> rõ ràng, cụ thể.</li>
+              <li><strong>Proof:</strong> bằng chứng hoặc xác nhận liên quan.</li>
+            </ol>
+          </li>
+        </ul>
+        <div class="note warn">Không có thông báo hoặc thông báo không đủ thông tin = chưa được xem là đã xin phép.</div>
+      </div>
+    </details>
+
+  </div>
+</details>
+
+<!-- ================= PHẦN II ================= -->
+<details class="part" id="phan-2">
+  <summary>
+    <div>
+      <span class="kicker">Phần II</span>
+      <h2>Giai Đoạn Học (10-14 Ngày)</h2>
+    </div>
+    <span class="chev">▾</span>
+  </summary>
+  <div class="part-body">
+
+    <details class="item">
+      <summary>
+        <div class="num">1</div>
+        <div class="item-title"><h3>Địa điểm học</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <div class="loc-row">
+          <span class="loc-ico">📍</span>
+          <div>
+            <div class="loc-label">Địa điểm học</div>
+            <div class="loc-val">Văn phòng PATI Group – Midtown M7 Signature (Đường số 15, Phường Tân Mỹ, TP.HCM)</div>
+          </div>
+        </div>
+        <div class="loc-row">
+          <span class="loc-ico">🌐</span>
+          <div>
+            <div class="loc-label">Website học các khóa học</div>
+            <div class="loc-val"><a class="link" href="https://learntogrow.patiagency.com/auth/login?redirect=/" target="_blank" rel="noopener">learntogrow.patiagency.com</a></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary>
+        <div class="num">2</div>
+        <div class="item-title"><h3>Cách đăng nhập Gitiho</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <ol class="steps">
+          <li>
+            <strong>Kiểm tra email</strong> từ công ty. Email chứa <strong>tên đăng nhập</strong> và <strong>mật khẩu</strong>, với tiêu đề:
+            <div class="email-card">
+              <span class="email-tag">Tiêu đề email</span>
+              <span class="email-subject">“Bộ phận đào tạo của CÔNG TY TNHH PATI GROUP AGENCY mời bạn truy cập vào hệ thống đào tạo nội bộ”.</span>
+            </div>
+          </li>
+          <li>Nhấn nút <strong>“TRUY CẬP NGAY”</strong> trong email.</li>
+          <li>Dùng tên đăng nhập và mật khẩu được cấp để đăng nhập vào hệ thống Gitiho.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary>
+        <div class="num">3</div>
+        <div class="item-title"><h3>Quy định học khóa học</h3></div>
+        <span class="chev">▾</span>
+      </summary>
+      <div class="item-body">
+        <ul>
+          <li>Khóa học 100% bằng tiếng Anh, do chuyên gia nước ngoài giảng dạy trực tuyến.</li>
+          <li>Khóa học gồm 9 chương, cần học theo đúng thứ tự.</li>
+          <li>Mỗi chương có bài kiểm tra. Cần đạt bài kiểm tra để mở khóa chương tiếp theo.</li>
+          <li>Toàn bộ nội dung học và bài kiểm tra được thực hiện trên hệ thống Gitiho.</li>
+        </ul>
+        <div class="penalty">
+          <div class="ph">⚠ Lưu ý quan trọng</div>
+          <p>Nếu dừng giữa chừng hoặc không hoàn thành bài tổng kết, <strong>công ty không chi trả trợ cấp cho giai đoạn học và kết thúc quá trình đào tạo.</strong></p>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</details>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="LOGO PATI GROUP.png" alt="PATI Group">
+    <strong>PATI Group</strong> · Nguyên Tắc Làm Việc dành cho Trainee<br>
+    Áp dụng từ ngày đầu tiên. Mọi thắc mắc liên hệ Direct Manager hoặc HRM.
+  </div>
+</footer>
+
+<script>
+  function openTarget(){
+    var el = document.getElementById(location.hash.slice(1));
+    while (el) { if (el.tagName === 'DETAILS') el.open = true; el = el.parentElement; }
+  }
+  addEventListener('hashchange', openTarget);
+  openTarget();
+  addEventListener('beforeprint', function(){
+    document.querySelectorAll('details').forEach(function(d){ d.open = true; });
+  });
+  // Copy mật khẩu WiFi
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var txt = btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(txt).then(function(){
+        var orig = btn.innerHTML;
+        btn.innerHTML = '✓';
+        btn.classList.add('done');
+        setTimeout(function(){ btn.innerHTML = orig; btn.classList.remove('done'); }, 1500);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
